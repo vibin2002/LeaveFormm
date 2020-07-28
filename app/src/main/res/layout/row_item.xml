@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher"
+            />
+
+
+        <TextView
+            android:id="@+id/his_from"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_marginTop="10dp"
+            android:text="From : "
+            />
+
+        <TextView
+            android:id="@+id/his_to"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="To : "
+            android:layout_marginStart="16dp"
+            android:layout_below="@+id/his_from"
+            android:layout_toRightOf="@+id/imageView"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123456"
+            android:id="@+id/his_from_date"
+            android:layout_toRightOf="@+id/his_from"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/his_to_date"
+            android:layout_toRightOf="@id/his_to"
+            android:layout_below="@id/his_from"
+            android:text="98765"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/his_reason"
+            android:text="Reason :"
+            android:layout_toRightOf="@id/imageView"
+            android:layout_below="@id/his_to"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/his_reason"
+            android:layout_below="@id/his_to"
+            android:id="@+id/his_reason_da"
+            android:paddingLeft="20dp"
+            android:text="asdfghjkl;"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
