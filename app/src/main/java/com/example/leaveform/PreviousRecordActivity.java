@@ -20,7 +20,7 @@ public class PreviousRecordActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
-    public int counter=0;
+    public int count=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,8 @@ public class PreviousRecordActivity extends AppCompatActivity {
                     String db_from = String.valueOf(ds.child("From").getValue());
                     String db_to = String.valueOf(ds.child("To").getValue());
                     String db_reason = String.valueOf(ds.child("Reason").getValue());
-                    history[counter]=new History(db_from,db_to,db_reason);
-                    historyLinkedlist.insertItem(history[counter]);
+                    history[count]=new History(db_from,db_to,db_reason);
+                    historyLinkedlist.insertItem(history[count]);
                 }
 
                 recyclerAdapter=new RecyclerAdapter(historyLinkedlist,childrencount);
