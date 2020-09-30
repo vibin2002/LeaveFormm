@@ -1,11 +1,10 @@
-package com.example.leaveform;
+package com.example.studentsityapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,10 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.time.LocalDate;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -79,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
             loginemail.setErrorEnabled(false);
             return true;
         }
-
     }
 
     private Boolean validatePassword()
@@ -149,14 +144,13 @@ public class LoginActivity extends AppCompatActivity {
 
                                 }
                             });
-
-
-
-                        } else {
+                        }
+                        else
+                            {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                        }
+                            }
                     }
                 });
     }

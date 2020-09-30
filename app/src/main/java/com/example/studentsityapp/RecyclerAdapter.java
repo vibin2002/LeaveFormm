@@ -1,4 +1,4 @@
-package com.example.leaveform;
+package com.example.studentsityapp;
 
 import android.view.LayoutInflater;
 import android.view.View;
