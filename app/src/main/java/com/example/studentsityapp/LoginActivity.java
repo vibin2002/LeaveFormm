@@ -28,9 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Button go,newuser;
     TextInputLayout loginemail,loginpassword;
     FirebaseAuth mAuth;
-
     DatabaseReference userRef;
-
     String designationtemp;
 
     @Override

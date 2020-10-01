@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LeaveForm</string>
+    <string name="app_name">Studentsity</string>
 
     <array name="depts">
         <item>CSE</item>

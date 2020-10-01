@@ -167,10 +167,7 @@ public class LeaveformActivity extends AppCompatActivity {
                             ref.child(uid).child(strserialNo).child("Reason").setValue(reasonForLeave);
 
                             sno = Integer.parseInt(strserialNo);
-                            if (sno == 0) {
-                                ref.child(uid).child("Totalleave").setValue(0);
-                            } else {
-                                countRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            countRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         leaveCount = dataSnapshot.getValue().toString();
@@ -183,8 +180,7 @@ public class LeaveformActivity extends AppCompatActivity {
                                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                                     }
-                                });
-                            }
+                            });
 
                             sno = sno + 1;
                             sRef2 = FirebaseDatabase.getInstance().getReference().child("serialNumber");

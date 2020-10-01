@@ -34,6 +34,7 @@ public class SignupActivity extends AppCompatActivity {
     DatabaseReference reference,serialref,emailIdsRef;
     RadioButton radioButton;
     RadioGroup designation;
+    private DatabaseReference countRef1;
 
     String selecteddept,selectedyear,selectedsem,selectedDesignation;
 
@@ -127,6 +128,8 @@ public class SignupActivity extends AppCompatActivity {
                 phoneno=regphno.getEditText().getText().toString();
 
 
+
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -143,8 +146,10 @@ public class SignupActivity extends AppCompatActivity {
                                     UserHelperClass helperClass=new UserHelperClass(name,username,email,phoneno,password,selectedDesignation,selecteddept,selectedyear,selectedsem);
                                     reference.child(userUid).setValue(helperClass);
 
+                                    countRef1=FirebaseDatabase.getInstance().getReference().child("leavehistory").child(userUid).child("Totalleave");
                                     serialref=FirebaseDatabase.getInstance().getReference().child("serialNumber");
                                     serialref.child(userUid).setValue(0);
+                                    countRef1.setValue(0);
 
                                     if(selectedDesignation.equals("Student")) {
                                         startActivity(new Intent(SignupActivity.this, LeaveformActivity.class));
