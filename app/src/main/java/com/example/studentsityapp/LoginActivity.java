@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this,designationtemp,Toast.LENGTH_SHORT).show();
                                     if(designationtemp.equals("Faculty"))
                                     {
-                                        startActivity(new Intent(LoginActivity.this,FacLeaveApprovalActivity.class));
+                                        startActivity(new Intent(LoginActivity.this,FacTimeTableDisplay.class));
                                         finish();
                                     }
                                     else if(designationtemp.equals("Student"))
