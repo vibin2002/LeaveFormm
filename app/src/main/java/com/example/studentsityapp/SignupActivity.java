@@ -146,7 +146,7 @@ public class SignupActivity extends AppCompatActivity {
                                     UserHelperClass helperClass=new UserHelperClass(name,username,email,phoneno,password,selectedDesignation,selecteddept,selectedyear,selectedsem);
                                     reference.child(userUid).setValue(helperClass);
 
-                                    countRef1=FirebaseDatabase.getInstance().getReference().child("leavehistory").child(userUid).child("Totalleave");
+                                    countRef1=FirebaseDatabase.getInstance().getReference().child("LeaveCount").child(userUid).child("Totalleave");
                                     serialref=FirebaseDatabase.getInstance().getReference().child("serialNumber");
                                     serialref.child(userUid).setValue(0);
                                     countRef1.setValue(0);

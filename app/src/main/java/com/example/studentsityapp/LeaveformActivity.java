@@ -136,7 +136,7 @@ public class LeaveformActivity extends AppCompatActivity {
 
 
         sRef=FirebaseDatabase.getInstance().getReference().child("serialNumber").child(uid);
-        countRef=FirebaseDatabase.getInstance().getReference().child("leavehistory").child(uid).child("Totalleave");
+        countRef=FirebaseDatabase.getInstance().getReference().child("LeaveCount").child(uid).child("Totalleave");
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
