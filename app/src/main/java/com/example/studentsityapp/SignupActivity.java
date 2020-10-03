@@ -22,6 +22,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -35,6 +39,7 @@ public class SignupActivity extends AppCompatActivity {
     RadioButton radioButton;
     RadioGroup designation;
     private DatabaseReference countRef1;
+    FirebaseFirestore firestore;
 
     String selecteddept,selectedyear,selectedsem,selectedDesignation;
 
@@ -56,6 +61,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
+        firestore=FirebaseFirestore.getInstance();
         regfullname=findViewById(R.id.signup_name);
         regusername=findViewById(R.id.signup_username);
         regemail=findViewById(R.id.signup_Email);
@@ -145,6 +151,10 @@ public class SignupActivity extends AppCompatActivity {
 
                                     UserHelperClass helperClass=new UserHelperClass(name,username,email,phoneno,password,selectedDesignation,selecteddept,selectedyear,selectedsem);
                                     reference.child(userUid).setValue(helperClass);
+
+                                    Map<String,String> map=new HashMap<>();
+                                    map.put(userUid,name);
+                                    firestore.collection("Students").document(selecteddept).set(map);
 
                                     countRef1=FirebaseDatabase.getInstance().getReference().child("LeaveCount").child(userUid).child("Totalleave");
                                     serialref=FirebaseDatabase.getInstance().getReference().child("serialNumber");

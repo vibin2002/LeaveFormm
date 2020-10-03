@@ -1,6 +1,7 @@
 package com.example.studentsityapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studentsityapp.FacAttendanceActivity;
 import com.example.studentsityapp.R;
 import com.example.studentsityapp.UserHelperclass.Timetable;
 
@@ -39,6 +41,13 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder2 holder, int position) {
         holder.period.setText(arrayList.get(position).getPeriod());
         holder.periodName.setText(arrayList.get(position).getPeriodName());
+        holder.periodName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, FacAttendanceActivity.class));
+            }
+        });
+
     }
 
     @Override
