@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.studentsityapp.UserHelperclass.FacDashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -127,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this,designationtemp,Toast.LENGTH_SHORT).show();
                                     if(designationtemp.equals("Faculty"))
                                     {
-                                        startActivity(new Intent(LoginActivity.this,FacTimeTableDisplay.class));
+                                        startActivity(new Intent(LoginActivity.this, FacDashboard.class));
                                         finish();
                                     }
                                     else if(designationtemp.equals("Student"))

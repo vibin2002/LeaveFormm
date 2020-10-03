@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.studentsityapp.Adapters.AttendanceAdapter;
@@ -89,4 +92,20 @@ public class FacAttendanceActivity extends AppCompatActivity {
         attendanceRV.setAdapter(adapter);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.attendanceactivitymenu,menu);
+        return true;
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        if (item.getItemId() == R.id.submitbtn) {
+//            ArrayList<String> present = new AttendanceAdapter().getPresentstuds();
+//            System.out.println(present.toString());
+//        }
+//        return true;
+//    }
 }
