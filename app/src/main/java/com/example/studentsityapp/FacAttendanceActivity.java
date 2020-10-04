@@ -36,7 +36,7 @@ public class FacAttendanceActivity extends AppCompatActivity {
     FirebaseFirestore firestore;
     public ArrayList<String> names;
     DatabaseReference reference,ref2;
-    private String dept;
+    private String dept,subjectname;
     Map<String,Integer> map;
     TextView classname,subject,datetoday;
     private String TAG="Kadupu";
@@ -54,13 +54,15 @@ public class FacAttendanceActivity extends AppCompatActivity {
         names = new ArrayList<>();
         map=new HashMap<>();
         attendanceRV = findViewById(R.id.attendance_RV);
+        firestore=FirebaseFirestore.getInstance();
 
         Date d = new Date();                                                            //Date
         CharSequence s  = DateFormat.format("MMMM d, yyyy ", d.getTime());
-        String today=s.toString();
+        final String today=s.toString();
         datetoday.setText(today);
 
         Intent intent=getIntent();
+        subjectname=intent.getStringExtra("periodName");
         subject.setText(intent.getStringExtra("periodName"));
 
         reference = FirebaseDatabase.getInstance().getReference().child("users").child("Faculty").child("CSE").child(FirebaseAuth.getInstance().getUid()).child("department");
@@ -109,6 +111,9 @@ public class FacAttendanceActivity extends AppCompatActivity {
                 PresentStudents presentstuds =adapter.getPresentStudents();
                 Map<String, Integer> studsmap = presentstuds.getMap();
                 System.out.println("Present ="+studsmap);
+
+                firestore.collection("Attendance").document(dept).collection(subjectname).document(today).set(studsmap);
+
             }
         });
     }
