@@ -22,9 +22,16 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
     private Context context;
     private ArrayList<String> namelist;
 
+    public AttendanceAdapter() {
+    }
+
+
+    private ArrayList<String> presentstuds;
+
     public AttendanceAdapter(Context context, ArrayList<String> namelist) {
         this.context = context;
         this.namelist = namelist;
+        presentstuds=new ArrayList<>();
     }
 
 
@@ -38,7 +45,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.studname.setText(namelist.get(position));
         holder.studname.setTextColor(Color.parseColor("#FF0000"));
         holder.present.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -47,6 +54,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
                 if(buttonView.isChecked())
                 {
                     holder.studname.setTextColor(Color.parseColor("#008000"));
+                    presentstuds.add(holder.studname.getText().toString());
                 }
                 else if(!buttonView.isChecked())
                 {

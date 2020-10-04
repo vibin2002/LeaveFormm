@@ -38,13 +38,15 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder2 holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder2 holder, int position) {
         holder.period.setText(arrayList.get(position).getPeriod());
         holder.periodName.setText(arrayList.get(position).getPeriodName());
         holder.periodName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, FacAttendanceActivity.class));
+                Intent intent=new Intent(context, FacAttendanceActivity.class);
+                intent.putExtra("periodName",holder.periodName.getText());
+                context.startActivity(intent);
             }
         });
 

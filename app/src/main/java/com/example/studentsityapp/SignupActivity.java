@@ -61,7 +61,6 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        firestore=FirebaseFirestore.getInstance();
         regfullname=findViewById(R.id.signup_name);
         regusername=findViewById(R.id.signup_username);
         regemail=findViewById(R.id.signup_Email);
@@ -123,7 +122,7 @@ public class SignupActivity extends AppCompatActivity {
                 }
 
                 rootnode=FirebaseDatabase.getInstance();
-                reference = rootnode.getReference("users").child(selectedDesignation);
+                reference = rootnode.getReference("users").child(selectedDesignation).child(selecteddept);
                 emailIdsRef=rootnode.getReference("emailIds");
 
 
@@ -152,9 +151,6 @@ public class SignupActivity extends AppCompatActivity {
                                     UserHelperClass helperClass=new UserHelperClass(name,username,email,phoneno,password,selectedDesignation,selecteddept,selectedyear,selectedsem);
                                     reference.child(userUid).setValue(helperClass);
 
-                                    Map<String,String> map=new HashMap<>();
-                                    map.put(userUid,name);
-                                    firestore.collection("Students").document(selecteddept).set(map);
 
                                     countRef1=FirebaseDatabase.getInstance().getReference().child("LeaveCount").child(userUid).child("Totalleave");
                                     serialref=FirebaseDatabase.getInstance().getReference().child("serialNumber");
