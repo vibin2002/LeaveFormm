@@ -16,23 +16,46 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.studentsityapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.MyViewHolder> {
 
     private Context context;
     private ArrayList<String> namelist;
+    private Map<String,Integer> presentstuds;
+    private PresentStudents presentStudents;
+
+    public PresentStudents getPresentStudents() {
+        return presentStudents;
+    }
+
+    public void setPresentStudents(PresentStudents presentStudents) {
+        this.presentStudents = presentStudents;
+    }
+
+
+
+    public AttendanceAdapter(Context context, ArrayList<String> namelist, Map<String, Integer> presentstuds) {
+        this.context = context;
+        this.namelist = namelist;
+        this.presentstuds = presentstuds;
+        presentStudents=new PresentStudents();
+    }
+
+    public Map<String, Integer> getPresentstuds() {
+        return presentstuds;
+    }
+
+    public void setPresentstuds(Map<String, Integer> presentstuds) {
+        this.presentstuds = presentstuds;
+    }
 
     public AttendanceAdapter() {
     }
 
 
-    private ArrayList<String> presentstuds;
 
-    public AttendanceAdapter(Context context, ArrayList<String> namelist) {
-        this.context = context;
-        this.namelist = namelist;
-        presentstuds=new ArrayList<>();
-    }
 
 
 
@@ -54,11 +77,16 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
                 if(buttonView.isChecked())
                 {
                     holder.studname.setTextColor(Color.parseColor("#008000"));
-                    presentstuds.add(holder.studname.getText().toString());
+                    presentstuds.put(namelist.get(position),1);
+                    presentStudents.setMap(presentstuds);
+                    System.out.println(presentstuds.toString());
                 }
                 else if(!buttonView.isChecked())
                 {
                     holder.studname.setTextColor(Color.parseColor("#FF0000"));
+                    presentstuds.put(namelist.get(position),0);
+                    presentStudents.setMap(presentstuds);
+                    System.out.println(presentstuds.toString());
                 }
             }
         });
