@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class FacAttendanceActivity extends AppCompatActivity {
     Map<String,Integer> map;
     TextView classname,subject,datetoday;
     private String TAG="Kadupu";
-    private Button sumbit;
+    private String today;
     private AttendanceAdapter adapter;
 
     @Override
@@ -58,7 +59,7 @@ public class FacAttendanceActivity extends AppCompatActivity {
 
         Date d = new Date();                                                            //Date
         CharSequence s  = DateFormat.format("MMMM d, yyyy ", d.getTime());
-        final String today=s.toString();
+        today=s.toString();
         datetoday.setText(today);
 
         Intent intent=getIntent();
@@ -103,19 +104,7 @@ public class FacAttendanceActivity extends AppCompatActivity {
 
             }
         });
-        sumbit=findViewById(R.id.btn_submit);
-        sumbit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                PresentStudents presentstuds =adapter.getPresentStudents();
-                Map<String, Integer> studsmap = presentstuds.getMap();
-                System.out.println("Present ="+studsmap);
-
-                firestore.collection("Attendance").document(dept).collection(subjectname).document(today).set(studsmap);
-
-            }
-        });
     }
 
     @Override
@@ -125,12 +114,14 @@ public class FacAttendanceActivity extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        if (item.getItemId() == R.id.submitbtn) {
-//           // ArrayList<String> present = new AttendanceAdapter().getPresentstuds();
-//            System.out.println("Present students"+(new AttendanceAdapter().getPresentstuds()).toString());
-//        }
-//        return true;
-//    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.submitbtn) {
+            PresentStudents presentstuds =adapter.getPresentStudents();
+            Map<String, Integer> studsmap = presentstuds.getMap();
+            System.out.println("Present ="+studsmap);
+            firestore.collection("Attendance").document(dept).collection(subjectname).document(today).set(studsmap);
+        }
+        return true;
+    }
 }
